@@ -1,3 +1,5 @@
+# nice extraction tool by http://nparikh.org/notes/zshrc.txt
+# Usage: extract <file>
 extract () {
     if [ -f $1 ] ; then
         case $1 in
@@ -17,3 +19,10 @@ extract () {
         echo "'$1' is not a valid file"
     fi
 }
+
+# verbose completion by https://github.com/holman/dotfiles
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
