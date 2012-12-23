@@ -8,6 +8,7 @@ alias optim='image_optim -v -r .'
 alias updatedb="/ && sudo /usr/libexec/locate.updatedb -v"
 alias t="/usr/local/Cellar/todo-txt/2.9/bin/todo.sh"
 alias pw="st /Users/pc/Dropbox/passwords.txt"
+alias lg="la | grep "
 # Nifty extras
 alias nethack='telnet nethack.alt.org'
 
