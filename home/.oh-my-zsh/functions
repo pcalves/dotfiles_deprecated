@@ -21,19 +21,12 @@ extract () {
 }
 
 orphans () {
-    PROJ='../'
-
-    for image in `ls -R *jpg *png *gif`
-    do
-       name=`basename $image`
-       result = `ack -1lh $name $PROJ`
-       if [ -z "$result" ]; then
-            echo "$image not found"
-       fi
-    done
-
-    # ls -R *jpg *png *gif | xargs basename > /tmp/patterns
-    # ack /tmp/patterns ../*
+  for IMG in * ;
+  do
+    echo $IMG;
+    grep -m 1 -l -r $IMG ../*;
+    echo '---';
+  done;
 }
 
 # verbose completion by https://github.com/holman/dotfiles
