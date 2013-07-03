@@ -9,7 +9,7 @@ alias updatedb="/ && sudo /usr/libexec/locate.updatedb -v"
 alias t="/usr/local/Cellar/todo-txt/2.9/bin/todo.sh"
 alias pw="st /Users/pc/Dropbox/passwords.txt"
 alias lg="la | grep "
-alias sass='sass --sourcemap --scss --watch -g --style compressed '
+alias sasss='sass --sourcemap --scss --watch -g --style compressed '
 
 # Nifty extras
 alias nethack='telnet nethack.alt.org'
