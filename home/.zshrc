@@ -36,6 +36,7 @@ source $ZSH/functions
 source $ZSH/aliases
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/pc/android-sdk-macosx/tools:/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/share/npm/bin:$PATH
 #:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin
 export PATH="$(brew --prefix php54)/bin:$PATH"
 PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
