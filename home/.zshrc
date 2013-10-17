@@ -23,8 +23,8 @@ ZSH_THEME="gentoo"
 # COMPLETION_WAITING_DOTS="true"
 
 export EDITOR='subl -w'
-export LANG="pt_PT.utf8" 
-export LC_ALL=C 
+export LANG="pt_PT.utf8"
+export LC_ALL=C
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -50,8 +50,12 @@ export PATH="/usr/local/heroku/bin:$PATH"
 source "`brew --prefix`/etc/grc.bashrc"
 
 ### rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### nvm
 source ~/.nvm/nvm.sh
+
+# pure
+autoload -U promptinit && promptinit
+prompt pure
