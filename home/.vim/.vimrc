@@ -11,7 +11,7 @@ set guifont=menlo\ for\ powerline:h16
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
-set linespace=15
+set linespace=20
 set backspace=indent,eol,start
 set history=1000                "Store lots of :cmdline history
 set autoread " Reload files changed outside vim
