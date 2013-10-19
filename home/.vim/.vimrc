@@ -1,7 +1,6 @@
 set nocompatible " Disable vi-compatibility
 " load pathogen
 execute pathogen#infect()
-call pathogen#infect()
 "Enable filetypes
 filetype plugin indent on
 " solarized
