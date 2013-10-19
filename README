@@ -13,3 +13,4 @@ INSTALLATION
     3.7. .zshrc -> /Users/name/.homesick/repos/pcalves/dotfiles/home/.zshrc
 4. Clone vim bundles. (FINDA AN EASIER WAY TO DO THIS, PLEASE)
 5. Install powerline (https://coderwall.com/p/dmhp5q)
+    5.1 Powerline patched fonts (https://gist.github.com/qrush/1595572)

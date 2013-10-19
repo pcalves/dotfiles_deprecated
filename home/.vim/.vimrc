@@ -7,7 +7,8 @@ filetype plugin indent on
 set background=dark
 colorscheme solarized
 set number " always show line numbers
-set guifont=menlo\ for\ powerline:h16
+set guifont=menlo\ for\ powerline:h12
+let g:Powerline_symbols = 'fancy'
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
