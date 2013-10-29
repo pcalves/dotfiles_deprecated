@@ -1,6 +1,5 @@
-Very simple dotfiles -- for now
-
-INSTALLATION
+Installation
+============
 1. If you don't have it already, install homesick (technicalpickles/homesick)
 2. Clone this repo using homesick
 3. Link repo content into home dir:
