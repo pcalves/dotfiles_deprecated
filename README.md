@@ -1,15 +1,8 @@
 Installation
 ============
-1. If you don't have it already, install homesick (technicalpickles/homesick)
-2. Clone this repo using homesick
-3. Link repo content into home dir:
-    3.1. .ackrc -> /Users/name/.homesick/repos/pcalves/dotfiles/home/.ackrc
-    3.2. .gvimrc -> /Users/name/.homesick/repos/pcalves/dotfiles/home/.vim/.gvimrc
-    3.3. .oh-my-zsh -> /Users/name/.homesick/repos/pcalves/dotfiles/home/.oh-my-zsh
-    3.4. .osx -> /Users/name/.homesick/repos/pcalves/dotfiles/home/.osx
-    3.5. .vim -> /Users/name/.homesick/repos/pcalves/dotfiles/home/.vim
-    3.6. .vimrc -> /Users/name/.homesick/repos/pcalves/dotfiles/home/.vim/.vimrc
-    3.7. .zshrc -> /Users/name/.homesick/repos/pcalves/dotfiles/home/.zshrc
-4. Clone vim bundles. (FINDA AN EASIER WAY TO DO THIS, PLEASE)
-5. Install powerline (https://coderwall.com/p/dmhp5q)
-    5.1 Powerline patched fonts (https://gist.github.com/qrush/1595572)
+1. If you don't have it already, install [homesick](https://github.com/technicalpickles/homesick);
+2. Clone this repo: `homesick clone pcalves/dotfiles`;
+3. Symlink contens: `homesick symlink dotfiles`;
+4. Clone vim bundles. (**find an easier way to do this**);
+5. Install [powerline](https://coderwall.com/p/dmhp5q);
+6. Get [patched fonts](https://gist.github.com/qrush/1595572) for powerline;
