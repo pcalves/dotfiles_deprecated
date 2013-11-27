@@ -23,8 +23,10 @@ ZSH_THEME="pure"
 # COMPLETION_WAITING_DOTS="true"
 
 export EDITOR='subl -w'
-export LANG="pt_PT.utf8"
-export LC_ALL=C
+# export LANG="pt_PT.utf8"
+# export LC_ALL=C
+export LC_ALL=pt_PT.UTF-8
+export LANG=pt_PT.UTF-8
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -40,7 +42,7 @@ export PATH=/usr/local/share/npm/bin:$PATH
 #:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin
 export PATH="$(brew --prefix php54)/bin:$PATH"
 PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
-PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS/
+PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
