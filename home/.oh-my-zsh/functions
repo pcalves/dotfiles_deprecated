@@ -184,3 +184,24 @@ svnst () {
 cdf() {  # short for cdfinder
   cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
 }
+
+function toggle_hidden_files() {
+    show=`defaults read com.apple.finder AppleShowAllFiles`
+    if [ $show -eq 1 ]; then
+        echo "setting AppleShowAllFiles 0";
+        defaults write com.apple.finder AppleShowAllFiles 0
+    else
+        echo "setting AppleShowAllFiles 1";
+        defaults write com.apple.finder AppleShowAllFiles 1
+    fi
+    restart_finder
+}
+
+function restart_finder() {
+  #killall Finder;
+  echo 'quitting finder…';
+  osascript -e 'tell app "Finder" to quit';
+  sleep 1;
+  echo 'starting finder…';
+  open -a Finder.app;
+}

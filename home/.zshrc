@@ -31,7 +31,7 @@ export LANG=pt_PT.UTF-8
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git textmate svn pow debian nginx sublime brew ssh-agent composer gem laravel vagrant knife knife_ssh node npm ruby rvm)
+plugins=(git textmate svn pow debian nginx sublime brew ssh-agent composer gem laravel vagrant knife knife_ssh node npm ruby rvm titanium alloy)
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH/functions
@@ -41,7 +41,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X1
 export PATH=/usr/local/share/npm/bin:$PATH
 #:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin
 export PATH="$(brew --prefix php54)/bin:$PATH"
-PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+#PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
 PATH=$PATH:/Applications/VirtualBox.app/Contents/MacOS
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh

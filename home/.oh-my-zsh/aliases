@@ -23,3 +23,5 @@ alias acfg="subl /private/etc/apache2/httpd.conf"
 alias ar="sudo apachectl restart"
 alias h="subl /private/etc/hosts && subl /private/etc/apache2/extra/httpd-vhosts.conf"
 # alias vh="subl /private/etc/apache2/extra/httpd-vhosts.conf"
+
+alias th="toggle_hidden_files"
