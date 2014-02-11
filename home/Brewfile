@@ -1,6 +1,5 @@
 install ack
 install curl
-install composer
 install freetype
 install figlet
 install subversion
@@ -12,6 +11,6 @@ install php55-xdebug
 install php55-mcrypt
 install php-code-sniffer
 install php-cs-fixer
-install php-md
+install phpmd
 update
 doctor
