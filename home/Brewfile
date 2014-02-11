@@ -1,0 +1,17 @@
+install ack
+install curl
+install composer
+install freetype
+install figlet
+install subversion
+install todo-txt
+tap homebrew/dupes
+tap josegonzalez/homebrew-php
+install php55
+install php55-xdebug
+install php55-mcrypt
+install php-code-sniffer
+install php-cs-fixer
+install php-md
+update
+doctor

@@ -102,7 +102,7 @@ svn () {
 
     #colorize the diff in vim
     #need to do "syntax on" in your vimrc
-    command svn diff "$@" | vim -R -
+    command svn diff "$@" | st -R -
 
   #add some color to svn status output and page if needed:
   #M = blue
