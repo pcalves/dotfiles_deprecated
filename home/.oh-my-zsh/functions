@@ -20,14 +20,9 @@ extract () {
     fi
 }
 
-orphans () {
-  for IMG in * ;
-  do
-    echo $IMG;
-    grep -m 1 -l -r $IMG ../*;
-    echo '---';
-  done;
-}
+
+
+
 
 # verbose completion by https://github.com/holman/dotfiles
 zstyle ':completion:*' verbose yes
@@ -35,6 +30,10 @@ zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
+
+
+
+
 
 # Highlight STDIN based on PCRE patterns.
 function highlight {
@@ -179,6 +178,11 @@ svnst () {
     fi;
 }
 
+# Set SVN ignore based on .svnignore file
+svnignore () {
+    command svn propset svn:ignore -F .svnignore  .
+}
+
 # cd into whatever is the forefront Finder window.
 # stolen from https://github.com/paulirish/dotfiles/commit/e67d1bc03
 cdf() {  # short for cdfinder
@@ -204,4 +208,12 @@ function restart_finder() {
   sleep 1;
   echo 'starting finder…';
   open -a Finder.app;
+}
+
+function base64() {
+  if [ -f $1 ] ; then
+    openssl base64 < $1 | tr -d '\n' | pbcopy
+  else
+      echo "'$1' is not a valid file"
+  fi
 }

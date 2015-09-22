@@ -2,26 +2,28 @@
 alias grep='grep --color=auto' # Always highlight grep search term
 alias ping='ping -c 5'      # Pings with 5 packets, not unlimited
 alias df='df -h'            # Disk free, in gigabytes, not bytes
-alias du='du -h -c'         # Calculate total disk usage for a folder
+alias du='du -h -c'              # Calculate total disk usage for a folder
+alias dus='du -h -s * | sort -r' # Show file usage for files in folder, ordered by file size
 alias cp='cp -v'            # verbose copy by default
-alias dus='du -h -s * | sort -h' # Show file usage for files in folder, ordered by file size
 alias clr='clear;echo "Currently logged in on $(tty), as $(whoami) in directory $(pwd)."'
 alias optim='image_optim -v -r .'
 alias updatedb="/ && sudo /usr/libexec/locate.updatedb -v"
-alias t="/usr/local/Cellar/todo-txt/2.9/bin/todo.sh"
-alias pw="st /Users/pc/Dropbox/passwords.txt"
 alias lg="la | grep "
 alias sasss='sass --sourcemap --scss --watch -g --style compressed '
 
 # Nifty extras
 alias nethack='telnet nethack.alt.org'
 
+# Pattern Lab
+alias plb='php core/builder.php -g'
+alias plr='php core/builder.php -wr'
+
 # aliases
-alias ohmyzsh="subl ~/.oh-my-zsh && subl ~/.zshrc"
-alias zcfg="subl ~/.zshrc"
-alias acfg="subl /private/etc/apache2/httpd.conf"
+alias ohmyzsh="nvim ~/.oh-my-zsh && nvim ~/.zshrc"
+alias zcfg="nvim ~/.zshrc"
+alias acfg="nvim /private/etc/apache2/httpd.conf"
 alias ar="sudo apachectl restart"
-alias h="subl /private/etc/hosts && subl /private/etc/apache2/extra/httpd-vhosts.conf"
-# alias vh="subl /private/etc/apache2/extra/httpd-vhosts.conf"
+alias h="nvim /private/etc/hosts && nvim /private/etc/apache2/extra/httpd-vhosts.conf"
+# alias vh="nvim /private/etc/apache2/extra/httpd-vhosts.conf"
 
 alias th="toggle_hidden_files"

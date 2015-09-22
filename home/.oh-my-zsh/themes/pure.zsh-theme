@@ -52,7 +52,7 @@ autoload -Uz vcs_info
 
 # Set vcs_info parameters
 #
-zstyle ':vcs_info:*' enable hg bzr git
+zstyle ':vcs_info:*' enable hg bzr git svn
 zstyle ':vcs_info:*:*' unstagedstr '!'
 zstyle ':vcs_info:*:*' stagedstr '+'
 zstyle ':vcs_info:*:*' formats "$FX[bold]%r$FX[no-bold]/%S" "%s/%b" "%%u%c"
