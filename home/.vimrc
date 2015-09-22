@@ -259,14 +259,3 @@ endfunction
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
-
-
-
-
-
-"" nerdtree plugin config
-" keymap
-map <C-\> :NERDTreeToggle<CR>
-" close vim if the only open buffer is nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
