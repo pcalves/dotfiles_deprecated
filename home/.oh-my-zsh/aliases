@@ -29,7 +29,7 @@ alias h="nvim /private/etc/hosts && nvim /private/etc/apache2/extra/httpd-vhosts
 alias th="toggle_hidden_files"
 
 # GALP aliases (mounting SMB)
-alias mount_galpon_test="mkdir /Volumes/galpon_test && mount_smbfs //others197@195.23.3.45/galpon2014_testes /Volumes/galpon_test"
-alias mount_galpon_prod="mkdir /Volumes/galpon_prod && mount_smbfs //others197@195.23.3.45/galpgaselectricidade /Volumes/galpon_prod"
-alias mount_energia_test="mkdir /Volumes/energia_test && mount_smbfs //others197@195.23.3.45/galp_continente_testes /Volumes/energia_test"
-alias mount_energia_prod="mkdir /Volumes/energia_prod && mount_smbfs //others197@195.23.3.45/galp_energiacubo /Volumes/energia_prod"
+alias mount_galpon_test="mkdir -p /Volumes/galpon_test && mount_smbfs //others197@195.23.3.45/galpon2014_testes /Volumes/galpon_test"
+alias mount_galpon_prod="mkdir -p /Volumes/galpon_prod && mount_smbfs //others197@195.23.3.45/galpgaselectricidade /Volumes/galpon_prod"
+alias mount_energia_test="mkdir -p /Volumes/energia_test && mount_smbfs //others197@195.23.3.45/galp_continente_testes /Volumes/energia_test"
+alias mount_energia_prod="mkdir -p /Volumes/energia_prod && mount_smbfs //others197@195.23.3.45/galp_energiacubo /Volumes/energia_prod"
