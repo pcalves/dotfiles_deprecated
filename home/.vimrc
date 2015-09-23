@@ -1,3 +1,5 @@
+set nocompatible      " This should be the first line. It sets vim to not be backwards compatible with vi.
+
 "" Plug.vim (https://github.com/junegunn/vim-plug)
 call plug#begin('~/.vim/plugged')
 
@@ -28,6 +30,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'ap/vim-css-color'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'evidens/vim-twig'
+Plug 'xsbeats/vim-blade'
 
 " vim niceties for various languages
 Plug 'burnettk/vim-angular'
@@ -48,7 +51,7 @@ let base16colorspace=256
 
 
 "" MAIN SETTINGS
-syntax enable                      " Syntax highlighting
+syntax on                          " Syntax highlighting
 set encoding=utf-8
 set showcmd                        " display incomplete commands
 filetype plugin indent on          " load file type plugins + indentation
