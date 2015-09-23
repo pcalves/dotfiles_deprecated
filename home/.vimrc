@@ -1,50 +1,39 @@
-"" Vundle (VIM Bundle manager) settings
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"" Plug.vim (https://github.com/junegunn/vim-plug)
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.nvim/bundle/Vundle.vim
-call vundle#begin('~/.nvim/bundle')
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 "" Plugins
-Plugin 'chriskempson/base16-vim'
-Plugin 'mattn/emmet-vim'
-" Plugin 'junegunn/vim-easy-align'
-Plugin 'itchyny/lightline.vim'
-Plugin 'vim-scripts/Align'
-" Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
-Plugin 'Townk/vim-autoclose'
+Plug 'chriskempson/base16-vim'
+Plug 'mattn/emmet-vim'
+" Plug 'junegunn/vim-easy-align'
+Plug 'itchyny/lightline.vim'
+Plug 'vim-scripts/Align'
+" Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'Townk/vim-autoclose'
 " NeoVim version of Ag plugin, support async search
-Plugin 'Numkil/ag.nvim'
-Plugin 'honza/vim-snippets'
+Plug 'Numkil/ag.nvim'
+Plug 'honza/vim-snippets'
 
 " syntax highlighters
-Plugin 'othree/html5.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'ap/vim-css-color'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle.git'
-Plugin 'evidens/vim-twig'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'ap/vim-css-color'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'evidens/vim-twig'
 
 " vim niceties for various languages
-Plugin 'burnettk/vim-angular'
+Plug 'burnettk/vim-angular'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+" Add plugins to &runtimepath
+call plug#end()
 
 
 
