@@ -1,34 +1,31 @@
-set nocompatible      " This should be the first line. It sets vim to not be backwards compatible with vi.
+set nocompatible " This should be the first line. It sets vim to not be backwards compatible with vi.
 
 "" Plug.vim (https://github.com/junegunn/vim-plug)
 call plug#begin('~/.vim/plugged')
 
 "" Plugins
-Plug 'chriskempson/base16-vim'
-Plug 'mattn/emmet-vim'
-" Plug 'junegunn/vim-easy-align'
-Plug 'itchyny/lightline.vim'
-Plug 'vim-scripts/Align'
-" Plug 'scrooloose/nerdtree'
-Plug 'Townk/vim-autoclose'
-Plug 'ervandew/supertab'
-Plug 'kien/ctrlp.vim'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
-" NeoVim version of Ag plugin, support async search
-Plug 'Numkil/ag.nvim'
-Plug 'honza/vim-snippets'
+Plug 'chriskempson/base16-vim'           " base16 color scheme for vim (also gvim)
+Plug 'mattn/emmet-vim'                   " Emmet for vim, 'nuff said
+Plug 'itchyny/lightline.vim'             " Statusline
+Plug 'vim-scripts/Align'                 " It's in the name: align text, declarations, pretty much anything
+Plug 'Townk/vim-autoclose'               " Auto-inserts closing characters when applicable
+Plug 'ervandew/supertab'                 " Insert completions
+Plug 'kien/ctrlp.vim'                    " Fuzzy path file finder, just like Sublime's
+Plug 'ntpeters/vim-better-whitespace'    " Highlight trailing whitespace characters
+Plug 'tpope/vim-commentary'              " Comment/Uncomment code
+Plug 'tpope/vim-fugitive'                " git in vim ❤️
+Plug 'tpope/vim-repeat'                  " . for plugins
+Plug 'tpope/vim-surround'                " add surroundings to text (quotes, tags, brackets, etc.)
+Plug 'tpope/vim-vinegar'                 " enhance netrw, never look at nerdtree again
+Plug 'Numkil/ag.nvim'                    " NeoVim version of Ag plugin, support async search
+Plug 'tmhedberg/matchit'                 " % matches more than single characters (e.g. tag matching)
+Plug 'jeffkreeftmeijer/vim-numbertoggle' " toggle between absolute and relative line numbers
 
-" syntax highlighters
-Plug 'ap/vim-css-color'
+" Syntax highlighters, Pretty self-explanatory for the most part
+Plug 'ap/vim-css-color' " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'evidens/vim-twig'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/html5.vim'
 Plug 'xsbeats/vim-blade'
@@ -52,17 +49,16 @@ let base16colorspace=256
 
 
 "" MAIN SETTINGS
-syntax on                          " Syntax highlighting
+syntax on                            " Syntax highlighting
 set encoding=utf-8
-set showcmd                        " display incomplete commands
-filetype plugin indent on          " load file type plugins + indentation
-set number                         " show line numbers
-set visualbell                     " No sounds
-set autoread                       " Reload files changed outside vim
-set cul                            " show cursor line
-" show hidden characters
-" set list listchars=tab:→\ ,eol:¬
-
+set showcmd                          " display incomplete commands
+filetype plugin indent on            " load file type plugins + indentation
+set number                           " show line numbers
+set visualbell                       " No sounds
+set autoread                         " Reload files changed outside vim
+set cul                              " show cursor line
+" :let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Only works with iTerm nightlies
+:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Cursor is pipe in Insert, block in Normal
 
 
 " Swap file stuff. If you don't have one make an undodir in ~/.vim
@@ -78,21 +74,20 @@ set undodir=~/.vim/undodir
 
 "" Whitespace
 set smartindent
-set wrap linebreak nolist       " don't wrap lines
-set breakindent                 " sensible soft wrapping of lines
-set tabstop=4 shiftwidth=4      " a tab is four spaces
-set expandtab                   " use spaces, not tabs (optional)
-set backspace=indent,eol,start  " backspace through everything in insert mode
-
+set wrap linebreak nolist      " don't wrap lines
+set breakindent                " sensible soft wrapping of lines
+set tabstop=4 shiftwidth=4     " a tab is four spaces
+set expandtab                  " use spaces, not tabs (optional)
+set backspace=indent,eol,start " backspace through everything in insert mode
 
 
 
 
 "" Folding settings
-set foldmethod=indent   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use
+set foldmethod=indent " fold based on indent
+set foldnestmax=10    " deepest fold is 10 levels
+set nofoldenable      " dont fold by default
+set foldlevel=1       " this is just what i use
 
 
 
@@ -117,10 +112,10 @@ nnoremap <Space> za
 
 
 "" PLUGIN SETTINGS
-" colorscheme solarized
 set laststatus=2  " always show status line
 " set showtabline=2 " always show tab line
 
+" TODO: make a separate config file for the mess below
 "" lightline plugin configuration
 set noshowmode " disable information shown by lightline
 let g:lightline = {
