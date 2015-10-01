@@ -20,6 +20,7 @@ Plug 'tpope/vim-vinegar'                 " enhance netrw, never look at nerdtree
 Plug 'Numkil/ag.nvim'                    " NeoVim version of Ag plugin, support async search
 Plug 'tmhedberg/matchit'                 " % matches more than single characters (e.g. tag matching)
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " toggle between absolute and relative line numbers
+Plug 'benekastah/neomake'                " ansyc :make, run linters, builders, etc.
 
 " Syntax highlighters, Pretty self-explanatory for the most part
 Plug 'ap/vim-css-color' " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
@@ -57,9 +58,9 @@ set number                           " show line numbers
 set visualbell                       " No sounds
 set autoread                         " Reload files changed outside vim
 set cul                              " show cursor line
-" :let $NVIM_TUI_ENABLE_TRUE_COLOR=1   " Only works with iTerm nightlies
-:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " Cursor is pipe in Insert, block in Normal
-
+" :let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " Only works with iTerm nightlies
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1  " Cursor is pipe in Insert, block in Normal
+let mapleader = ","                  " Use comma as leader
 
 " Swap file stuff. If you don't have one make an undodir in ~/.vim
 " In terminal just type mkdir -p ~/.vim/undodir
@@ -106,6 +107,9 @@ autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
 "" COMMAND MAPPINGS
 " toggle current fold open/closed
 nnoremap <Space> za
+" Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
+nnoremap <silent> <leader>n :bn<CR>
+nnoremap <silent> <leader>p :bp<CR>
 
 
 
@@ -114,6 +118,18 @@ nnoremap <Space> za
 "" PLUGIN SETTINGS
 set laststatus=2  " always show status line
 " set showtabline=2 " always show tab line
+
+"" neomake configiguration
+autocmd! BufWritePost * Neomake " run neomake on current file on every write (save)
+" let g:neomake_javascript_enabled_makers = ['javascript']
+" let g:neomake_error_sign = {
+"     \ 'text': 'E>',
+"     \ 'texthl': 'ErrorMsg',
+" \ }
+
+
+
+
 
 " TODO: make a separate config file for the mess below
 "" lightline plugin configuration
