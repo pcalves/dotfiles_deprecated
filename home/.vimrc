@@ -17,10 +17,12 @@ Plug 'tpope/vim-fugitive'                " git in vim ❤️
 Plug 'tpope/vim-repeat'                  " . for plugins
 Plug 'tpope/vim-surround'                " add surroundings to text (quotes, tags, brackets, etc.)
 Plug 'tpope/vim-vinegar'                 " enhance netrw, never look at nerdtree again
+Plug 'tpope/vim-speeddating'             " increment dates, times, numerals & ordinal (C-A/C-X)
 Plug 'Numkil/ag.nvim'                    " NeoVim version of Ag plugin, support async search
 Plug 'tmhedberg/matchit'                 " % matches more than single characters (e.g. tag matching)
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " toggle between absolute and relative line numbers
 Plug 'benekastah/neomake'                " ansyc :make, run linters, builders, etc.
+Plug 'editorconfig/editorconfig-vim'     " EditorConfig for vim, define coding styles b/w different editors & IDEs
 
 " Syntax highlighters, Pretty self-explanatory for the most part
 Plug 'ap/vim-css-color' " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
