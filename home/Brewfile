@@ -1,16 +1,18 @@
 install ack
 install curl
-install freetype
-install figlet
-install subversion
-install todo-txt
+install docker
+install git
+install hub
+install neovim
+install neovim-dot-app
+install the_silver_searcher
+install thefuck
+install tldr
+install wget
+install z
 tap homebrew/dupes
 tap josegonzalez/homebrew-php
-install php55
-install php55-xdebug
-install php55-mcrypt
-install php-code-sniffer
-install php-cs-fixer
-install phpmd
-update
+install php70
+install php70-xdebug
+install php70-mcrypt
 doctor
