@@ -9,8 +9,8 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="pure"
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -73,6 +73,8 @@ source ~/.nvm/nvm.sh
 PERL_MB_OPT="--install_base \"/Users/pc/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/pc/perl5"; export PERL_MM_OPT;
 
+# ECLIPSE PATH
+export ECLIM_PATH=/opt/homebrew-cask/Caskroom/eclipse-php/4.5.1/Eclipse.app/Contents/Eclipse/plugins/org.eclim_2.5.0/bin
 # ANDROID SDK PATH
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
@@ -85,3 +87,6 @@ export HISTSIZE=32768;
 export HISTFILESIZE=$HISTSIZE;
 export HISTCONTROL=ignoredups;
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
+
+# thefuck (https://github.com/nvbn/thefuck) alias
+eval "$(thefuck --alias)"

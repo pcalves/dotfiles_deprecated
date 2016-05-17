@@ -7,9 +7,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'           " base16 color scheme for vim (also gvim)
 Plug 'mattn/emmet-vim'                   " Emmet for vim, 'nuff said
 Plug 'itchyny/lightline.vim'             " Statusline
+Plug 'itchyny/lightline-powerful'        " Powerful settings for lightline
 Plug 'vim-scripts/Align'                 " It's in the name: align text, declarations, pretty much anything
 Plug 'Townk/vim-autoclose'               " Auto-inserts closing characters when applicable
-Plug 'ervandew/supertab'                 " Insert completions
+" Plug 'Valloric/YouCompleteMe'            " fuzzy-search code completion engine
+Plug 'Shougo/deoplete.nvim'
+Plug 'carlitux/deoplete-ternjs'
+" Plug 'ternjs/tern_for_vim'               " JS code completion
 Plug 'kien/ctrlp.vim'                    " Fuzzy path file finder, just like Sublime's
 Plug 'ntpeters/vim-better-whitespace'    " Highlight trailing whitespace characters
 Plug 'tpope/vim-commentary'              " Comment/Uncomment code
@@ -18,23 +22,43 @@ Plug 'tpope/vim-repeat'                  " . for plugins
 Plug 'tpope/vim-surround'                " add surroundings to text (quotes, tags, brackets, etc.)
 Plug 'tpope/vim-vinegar'                 " enhance netrw, never look at nerdtree again
 Plug 'tpope/vim-speeddating'             " increment dates, times, numerals & ordinal (C-A/C-X)
+Plug 'tpope/vim-characterize'            " ga improved: unicode, HTML entities, emoji codes
 Plug 'Numkil/ag.nvim'                    " NeoVim version of Ag plugin, support async search
 Plug 'tmhedberg/matchit'                 " % matches more than single characters (e.g. tag matching)
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " toggle between absolute and relative line numbers
 Plug 'benekastah/neomake'                " ansyc :make, run linters, builders, etc.
 Plug 'editorconfig/editorconfig-vim'     " EditorConfig for vim, define coding styles b/w different editors & IDEs
+Plug 'justinmk/vim-sneak'                " Vim motion plugin that jumps to any location specified by two characters (s{char}{char})
+Plug 'vim-scripts/IndexedSearch'         " shows 'Nth match out of M' at every search
+Plug 'nelstrom/vim-visual-star-search'   " start a * or # search from a vistual block
+Plug 'nathanaelkane/vim-indent-guides'   " show indentation visually
+Plug 'MattesGroeger/vim-bookmarks'       " bookmarks for vim
+Plug 'SirVer/ultisnips'                  " snippets for vim
+Plug 'scrooloose/syntastic'              " 🐴  runs files through external syntax checkers and displays any resulting errors to the user
+" Color Schemes
+Plug 'altercation/vim-colors-solarized'
+Plug 'acepukas/vim-zenburn'
+
+" Snippets
+Plug 'justinj/vim-react-snippets'
 
 " Syntax highlighters, Pretty self-explanatory for the most part
 Plug 'ap/vim-css-color' " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'evidens/vim-twig'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/html5.vim'
-Plug 'xsbeats/vim-blade'
+Plug 'sheerun/vim-polyglot' " Collection of language packs for vim, regularly updated
+" Plug 'evidens/vim-twig'
+" Plug 'tpope/vim-haml'
+" Plug 'hail2u/vim-css3-syntax'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+" Plug 'othree/html5.vim'
+" Plug 'xsbeats/vim-blade'
+" Plug 'mustache/vim-mustache-handlebars'
+" Plug 'leafgarland/typescript-vim'
 
 " vim niceties for various languages
 Plug 'burnettk/vim-angular'
+Plug 'kewah/vim-stylefmt'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -44,8 +68,7 @@ call plug#end()
 
 "" Color scheme
 set background=dark
-colorscheme base16-default
-let base16colorspace=256
+colorscheme zenburn
 
 
 
@@ -79,9 +102,10 @@ set undodir=~/.vim/undodir
 set smartindent
 set wrap linebreak nolist      " don't wrap lines
 set breakindent                " sensible soft wrapping of lines
-set tabstop=4 shiftwidth=4     " a tab is four spaces
+set tabstop=2 shiftwidth=2     " a tab is two spaces
 set expandtab                  " use spaces, not tabs (optional)
 set backspace=indent,eol,start " backspace through everything in insert mode
+
 
 
 
@@ -112,7 +136,10 @@ nnoremap <Space> za
 " Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
 nnoremap <silent> <leader>n :bn<CR>
 nnoremap <silent> <leader>p :bp<CR>
+nnoremap <silent> <leader>x :bd<CR>
 
+" Force saving files that require root permission
+cnoremap w!! w !sudo tee > /dev/null %
 
 
 
@@ -121,7 +148,7 @@ nnoremap <silent> <leader>p :bp<CR>
 set laststatus=2  " always show status line
 " set showtabline=2 " always show tab line
 
-"" neomake configiguration
+"" neomake configuration
 autocmd! BufWritePost * Neomake " run neomake on current file on every write (save)
 " let g:neomake_javascript_enabled_makers = ['javascript']
 " let g:neomake_error_sign = {
@@ -129,15 +156,40 @@ autocmd! BufWritePost * Neomake " run neomake on current file on every write (sa
 "     \ 'texthl': 'ErrorMsg',
 " \ }
 
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 2
+" set ts=4 sw=4 noet
+hi IndentGuidesOdd  ctermbg=236 " IndentGuidesOdd
+hi IndentGuidesEven ctermbg=238 " IndentGuidesEven
 
+"" automatically format CSS with Stylefmt on save
+" autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :Stylefmt
 
+"" configure ctrlp to ignore files set in .gitignore
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+"" Syntastic config
+" standardjs check for javascript
+let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_css_checkers = ['stylelint']
+
+" recommended config (straight from project repo)
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 
 " TODO: make a separate config file for the mess below
 "" lightline plugin configuration
 set noshowmode " disable information shown by lightline
 let g:lightline = {
-            \ 'colorscheme': 'jellybeans',
+            \ 'colorscheme': 'zenburn',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
             \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -265,3 +317,67 @@ endfunction
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
+
+
+
+"" Eclim — code completion for PHP
+let g:EclimCompletionMethod = 'omnifunc'
+" function IniEclim()
+"     if !filereadable("~/workspace/.metadata/.lock")
+"         execute "!$ECLIM_PATH/eclimd &> /dev/null &"
+"     endif
+" :endfunction
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" Use smartcase.
+let g:deoplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:deoplete#sources#syntax#min_keyword_length = 3
+let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:deoplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:deoplete#keyword_patterns = {}
+endif
+let g:deoplete#keyword_patterns['default'] = '\h\w*'
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:deoplete#sources#omni#input_patterns')
+    let g:deoplete#sources#omni#input_patterns = {}
+endif
+
+
+" Emmet autocomplete
+" let g:user_emmet_expandabbr_key = '<Tab>'
+
+
+" Mustache abbreviations
+let g:mustache_abbreviations = 1
+
+" Use JSX syntax in JS files
+let g:jsx_ext_required = 0
+
+" UltiSnips configs
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+
+" Allow netrw to remove non-empty local directories
+let g:netrw_localrmdir='rm -r'

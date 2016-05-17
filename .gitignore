@@ -9,6 +9,7 @@ home/.oh-my-zsh/custom/*
 home/.oh-my-zsh/*.swp
 !home/.oh-my-zsh/custom/example.zshcache
 home/.oh-my-zsh/cache/
+home/.vim/plugged
 home/.vim/bundle
 home/.vim/undodir
 home/.vimebundle
