@@ -90,3 +90,5 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
 
 # thefuck (https://github.com/nvbn/thefuck) alias
 eval "$(thefuck --alias)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

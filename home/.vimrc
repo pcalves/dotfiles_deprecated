@@ -4,40 +4,39 @@ set nocompatible " This should be the first line. It sets vim to not be backward
 call plug#begin('~/.vim/plugged')
 
 "" Plugins
-Plug 'chriskempson/base16-vim'           " base16 color scheme for vim (also gvim)
-Plug 'mattn/emmet-vim'                   " Emmet for vim, 'nuff said
-Plug 'itchyny/lightline.vim'             " Statusline
-Plug 'itchyny/lightline-powerful'        " Powerful settings for lightline
-Plug 'vim-scripts/Align'                 " It's in the name: align text, declarations, pretty much anything
-Plug 'Townk/vim-autoclose'               " Auto-inserts closing characters when applicable
-" Plug 'Valloric/YouCompleteMe'            " fuzzy-search code completion engine
-Plug 'Shougo/deoplete.nvim'
-Plug 'carlitux/deoplete-ternjs'
-" Plug 'ternjs/tern_for_vim'               " JS code completion
-Plug 'kien/ctrlp.vim'                    " Fuzzy path file finder, just like Sublime's
-Plug 'ntpeters/vim-better-whitespace'    " Highlight trailing whitespace characters
-Plug 'tpope/vim-commentary'              " Comment/Uncomment code
-Plug 'tpope/vim-fugitive'                " git in vim ❤️
-Plug 'tpope/vim-repeat'                  " . for plugins
-Plug 'tpope/vim-surround'                " add surroundings to text (quotes, tags, brackets, etc.)
-Plug 'tpope/vim-vinegar'                 " enhance netrw, never look at nerdtree again
-Plug 'tpope/vim-speeddating'             " increment dates, times, numerals & ordinal (C-A/C-X)
-Plug 'tpope/vim-characterize'            " ga improved: unicode, HTML entities, emoji codes
-Plug 'Numkil/ag.nvim'                    " NeoVim version of Ag plugin, support async search
-Plug 'tmhedberg/matchit'                 " % matches more than single characters (e.g. tag matching)
-Plug 'jeffkreeftmeijer/vim-numbertoggle' " toggle between absolute and relative line numbers
-Plug 'benekastah/neomake'                " ansyc :make, run linters, builders, etc.
-Plug 'editorconfig/editorconfig-vim'     " EditorConfig for vim, define coding styles b/w different editors & IDEs
-Plug 'justinmk/vim-sneak'                " Vim motion plugin that jumps to any location specified by two characters (s{char}{char})
-Plug 'vim-scripts/IndexedSearch'         " shows 'Nth match out of M' at every search
-Plug 'nelstrom/vim-visual-star-search'   " start a * or # search from a vistual block
-Plug 'nathanaelkane/vim-indent-guides'   " show indentation visually
-Plug 'MattesGroeger/vim-bookmarks'       " bookmarks for vim
-Plug 'SirVer/ultisnips'                  " snippets for vim
-Plug 'scrooloose/syntastic'              " 🐴  runs files through external syntax checkers and displays any resulting errors to the user
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'mattn/emmet-vim'                                            " Emmet for vim, 'nuff said
+Plug 'vim-airline/vim-airline'                                    " Statusline
+Plug 'vim-scripts/Align'                                          " It's in the name: align text, declarations, pretty much anything
+Plug 'Raimondi/delimitMate'                                       " Auto-inserts closing characters when applicable
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }       " asynchronous keyword completion
+Plug 'Shougo/neosnippet'                                          " snippets in vim
+Plug 'Shougo/neosnippet-snippets'                                 " default snippets
+Plug 'ternjs/tern_for_vim'                                        " JS code completion
+Plug 'ntpeters/vim-better-whitespace'                             " Highlight trailing whitespace characters
+Plug 'airblade/vim-gitgutter'                                     " git diff in gutter
+Plug 'tpope/vim-fugitive'                                         " git in vim ❤️
+Plug 'tpope/vim-commentary'                                       " Comment/Uncomment code
+Plug 'tpope/vim-repeat'                                           " . for plugins
+Plug 'tpope/vim-eunuch'                                           " vim sugar for the UNIX shell commands that need it the most.
+Plug 'tpope/vim-surround'                                         " add surroundings to text (quotes, tags, brackets, etc.)
+Plug 'tpope/vim-vinegar'                                          " enhance netrw, never look at nerdtree again
+Plug 'tpope/vim-speeddating'                                      " increment dates, times, numerals & ordinal (C-A/C-X)
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
+Plug 'junegunn/fzf.vim'                                           " fzf commands for vim
+Plug 'tmhedberg/matchit'                                          " % matches more than single characters (e.g. tag matching)
+Plug 'benekastah/neomake'                                         " ansyc :make, run linters, builders, etc.
+Plug 'editorconfig/editorconfig-vim'                              " EditorConfig for vim, define coding styles b/w different editors & IDEs
+Plug 'justinmk/vim-sneak'                                         " Vim motion plugin that jumps to any location specified by two characters (s{char}{char})
+Plug 'vim-scripts/IndexedSearch'                                  " shows 'Nth match out of M' at every search
+Plug 'nelstrom/vim-visual-star-search'                            " start a * or # search from a visual block
+Plug 'MattesGroeger/vim-bookmarks'                                " bookmarks for vim
+Plug 'janko-m/vim-test'                                           " run async tests from within vim
+
 " Color Schemes
-Plug 'altercation/vim-colors-solarized'
-Plug 'acepukas/vim-zenburn'
+Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
 " Snippets
 Plug 'justinj/vim-react-snippets'
@@ -46,29 +45,12 @@ Plug 'justinj/vim-react-snippets'
 Plug 'ap/vim-css-color' " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'sheerun/vim-polyglot' " Collection of language packs for vim, regularly updated
-" Plug 'evidens/vim-twig'
-" Plug 'tpope/vim-haml'
-" Plug 'hail2u/vim-css3-syntax'
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
-" Plug 'othree/html5.vim'
-" Plug 'xsbeats/vim-blade'
-" Plug 'mustache/vim-mustache-handlebars'
-" Plug 'leafgarland/typescript-vim'
 
 " vim niceties for various languages
-Plug 'burnettk/vim-angular'
 Plug 'kewah/vim-stylefmt'
 
 " Add plugins to &runtimepath
 call plug#end()
-
-
-
-
-"" Color scheme
-set background=dark
-colorscheme zenburn
 
 
 
@@ -83,7 +65,7 @@ set number                           " show line numbers
 set visualbell                       " No sounds
 set autoread                         " Reload files changed outside vim
 set cul                              " show cursor line
-" :let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " Only works with iTerm nightlies
+set relativenumber                   " default to relative numbers
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1  " Cursor is pipe in Insert, block in Normal
 let mapleader = ","                  " Use comma as leader
 
@@ -93,6 +75,14 @@ set noswapfile
 set hidden
 set undofile
 set undodir=~/.vim/undodir
+
+
+
+
+
+"" Color scheme
+set background=dark
+color dracula
 
 
 
@@ -138,6 +128,9 @@ nnoremap <silent> <leader>n :bn<CR>
 nnoremap <silent> <leader>p :bp<CR>
 nnoremap <silent> <leader>x :bd<CR>
 
+nnoremap <silent> <C-t> :FZF -m<cr>
+nnoremap <silent> <C-p> :FZF -m<cr>
+
 " Force saving files that require root permission
 cnoremap w!! w !sudo tee > /dev/null %
 
@@ -148,185 +141,48 @@ cnoremap w!! w !sudo tee > /dev/null %
 set laststatus=2  " always show status line
 " set showtabline=2 " always show tab line
 
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='dracula'
+
 "" neomake configuration
-autocmd! BufWritePost * Neomake " run neomake on current file on every write (save)
-" let g:neomake_javascript_enabled_makers = ['javascript']
-" let g:neomake_error_sign = {
-"     \ 'text': 'E>',
-"     \ 'texthl': 'ErrorMsg',
-" \ }
+" Open the loclist/quickfix list when entries are produced,
+" and preserve cursor position
+let g:neomake_open_list = 2
 
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_start_level = 2
-" set ts=4 sw=4 noet
-hi IndentGuidesOdd  ctermbg=236 " IndentGuidesOdd
-hi IndentGuidesEven ctermbg=238 " IndentGuidesEven
+" Customise error and warning signs
+let g:neomake_error_sign = {
+      \ 'text': 'E',
+      \ 'texthl': 'ErrorMsg',
+      \ }
 
-"" automatically format CSS with Stylefmt on save
-" autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :Stylefmt
+let g:neomake_warning_sign = {
+      \ 'text': 'W',
+      \ 'texthl': 'ErrorMsg',
+      \ }
 
-"" configure ctrlp to ignore files set in .gitignore
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" Run Neomake on :w
+autocmd! BufWritePost * Neomake
 
-"" Syntastic config
-" standardjs check for javascript
-let g:syntastic_javascript_checkers = ['standard']
-let g:syntastic_css_checkers = ['stylelint']
+" ---------- JAVASCRIPT MAKERS ----------
+" Default JS linting is with ESLint
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_jsx_enabled_makers = ['eslint']
+" load local eslint in the project root
+" modified from https://github.com/mtscout6/syntastic-local-eslint.vim
+" NB: This means, for your eslintrc to work properly, Neovim must be opened
+" from the project’s root directory
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
-" recommended config (straight from project repo)
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-
-" TODO: make a separate config file for the mess below
-"" lightline plugin configuration
-set noshowmode " disable information shown by lightline
-let g:lightline = {
-            \ 'colorscheme': 'zenburn',
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-            \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-            \ },
-            \ 'component_function': {
-            \   'fugitive': 'LightLineFugitive',
-            \   'filename': 'LightLineFilename',
-            \   'fileformat': 'LightLineFileformat',
-            \   'filetype': 'LightLineFiletype',
-            \   'fileencoding': 'LightLineFileencoding',
-            \   'mode': 'LightLineMode',
-            \   'ctrlpmark': 'CtrlPMark',
-            \ },
-            \ 'component_expand': {
-            \   'syntastic': 'SyntasticStatuslineFlag',
-            \ },
-            \ 'component_type': {
-            \   'syntastic': 'error',
-            \ },
-            \ 'separator': { 'left': '', 'right': '' },
-            \ 'subseparator': { 'left': '', 'right': '' }
-            \ }
-
-function! LightLineModified()
-    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineReadonly()
-    return &ft !~? 'help' && &readonly ? '' : ''
-endfunction
-
-function! LightLineFilename()
-    let fname = expand('%:t')
-    return fname == 'ControlP' ? g:lightline.ctrlp_item :
-                \ fname == '__Tagbar__' ? g:lightline.fname :
-                \ fname =~ '__Gundo\|NERD_tree' ? '' :
-                \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-                \ &ft == 'unite' ? unite#get_status_string() :
-                \ &ft == 'vimshell' ? vimshell#get_status_string() :
-                \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-                \ ('' != fname ? fname : '[No Name]') .
-                \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightLineFugitive()
-    try
-        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-            let mark = ' '  " edit here for cool mark
-            let _ = fugitive#head()
-            return strlen(_) ? mark._ : ''
-        endif
-    catch
-    endtry
-    return ''
-endfunction
-
-function! LightLineFileformat()
-    return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LightLineMode()
-    let fname = expand('%:t')
-    return fname == '__Tagbar__' ? 'Tagbar' :
-                \ fname == 'ControlP' ? 'CtrlP' :
-                \ fname == '__Gundo__' ? 'Gundo' :
-                \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-                \ fname =~ 'NERD_tree' ? 'NERDTree' :
-                \ &ft == 'unite' ? 'Unite' :
-                \ &ft == 'vimfiler' ? 'VimFiler' :
-                \ &ft == 'vimshell' ? 'VimShell' :
-                \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! CtrlPMark()
-    if expand('%:t') =~ 'ControlP'
-        call lightline#link('iR'[g:lightline.ctrlp_regex])
-        return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-                    \ , g:lightline.ctrlp_next], 0)
-    else
-        return ''
-    endif
-endfunction
-
-let g:ctrlp_status_func = {
-            \ 'main': 'CtrlPStatusFunc_1',
-            \ 'prog': 'CtrlPStatusFunc_2',
-            \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-    let g:lightline.ctrlp_regex = a:regex
-    let g:lightline.ctrlp_prev = a:prev
-    let g:lightline.ctrlp_item = a:item
-    let g:lightline.ctrlp_next = a:next
-    return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-    return lightline#statusline(0)
-endfunction
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-    return lightline#statusline(0)
-endfunction
-
-augroup AutoSyntastic
-    autocmd!
-    autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-    SyntasticCheck
-    call lightline#update()
-endfunction
-
-let g:unite_force_overwrite_statusline = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimshell_force_overwrite_statusline = 0
+" If an .eslintc file is NOT found in the current file's directory, or
+" the directories above it, switch to linting JS files w/ Standard
+" if findfile('.eslintrc', '.;') ==# ''
+"   let g:neomake_javascript_enabled_makers = ['standard']
+" endif
 
 
 
-"" Eclim — code completion for PHP
-let g:EclimCompletionMethod = 'omnifunc'
-" function IniEclim()
-"     if !filereadable("~/workspace/.metadata/.lock")
-"         execute "!$ECLIM_PATH/eclimd &> /dev/null &"
-"     endif
-" :endfunction
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -334,50 +190,40 @@ let g:deoplete#enable_at_startup = 1
 " Use smartcase.
 let g:deoplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:deoplete#sources#syntax#min_keyword_length = 3
-let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:deoplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:deoplete#keyword_patterns = {}
-endif
-let g:deoplete#keyword_patterns['default'] = '\h\w*'
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+let g:deoplete#sources#syntax#min_keyword_length = 1
 
 " Enable heavy omni completion.
-if !exists('g:deoplete#sources#omni#input_patterns')
-    let g:deoplete#sources#omni#input_patterns = {}
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
+
+" tern
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
 
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" Emmet autocomplete
-" let g:user_emmet_expandabbr_key = '<Tab>'
 
 
-" Mustache abbreviations
-let g:mustache_abbreviations = 1
 
 " Use JSX syntax in JS files
 let g:jsx_ext_required = 0
-
-" UltiSnips configs
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
 " Allow netrw to remove non-empty local directories
 let g:netrw_localrmdir='rm -r'
