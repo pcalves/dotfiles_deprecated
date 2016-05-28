@@ -12,9 +12,10 @@ Plug 'vim-airline/vim-airline'                                    " Statusline
 Plug 'vim-scripts/Align'                                          " It's in the name: align text, declarations, pretty much anything
 Plug 'Raimondi/delimitMate'                                       " Auto-inserts closing characters when applicable
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }       " asynchronous keyword completion
+Plug 'carlitux/deoplete-ternjs'                                   " deoplete.nvim source for javascript
 Plug 'Shougo/neosnippet'                                          " snippets in vim
 Plug 'Shougo/neosnippet-snippets'                                 " default snippets
-Plug 'ternjs/tern_for_vim'                                        " JS code completion
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }               " JS code completion
 Plug 'ntpeters/vim-better-whitespace'                             " Highlight trailing whitespace characters
 Plug 'airblade/vim-gitgutter'                                     " git diff in gutter
 Plug 'tpope/vim-fugitive'                                         " git in vim ❤️
@@ -42,9 +43,11 @@ Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plug 'justinj/vim-react-snippets'
 
 " Syntax highlighters, Pretty self-explanatory for the most part
-Plug 'ap/vim-css-color' " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
+Plug 'ap/vim-css-color'          " THIS IS THE BEST. Shows colors defined in CSS & various pre-processor languages
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'sheerun/vim-polyglot' " Collection of language packs for vim, regularly updated
+Plug 'sheerun/vim-polyglot'      " Collection of language packs for vim, regularly updated
+Plug 'gavocanov/vim-js-indent'   " Indenting from pangloss/vim-javascript
+Plug 'othree/yajs.vim'           " Better syntax highlighting than ^^
 
 " vim niceties for various languages
 Plug 'kewah/vim-stylefmt'
@@ -131,6 +134,13 @@ nnoremap <silent> <leader>x :bd<CR>
 nnoremap <silent> <C-t> :FZF -m<cr>
 nnoremap <silent> <C-p> :FZF -m<cr>
 
+" deoplete tab-complete
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+" ,<Tab> for regular tab
+inoremap <Leader><Tab> <Space><Space>
+" tern
+autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+
 " Force saving files that require root permission
 cnoremap w!! w !sudo tee > /dev/null %
 
@@ -186,7 +196,8 @@ let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = 0  " This do disable full signature type on autocomplete
 " Use smartcase.
 let g:deoplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
@@ -213,6 +224,9 @@ if exists('g:plugs["tern_for_vim"]')
   let g:tern_show_signature_in_pum = 1
   autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
+
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
