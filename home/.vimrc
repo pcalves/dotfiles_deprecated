@@ -34,7 +34,7 @@ Plug 'justinmk/vim-sneak'                                         " Vim motion p
 Plug 'vim-scripts/IndexedSearch'                                  " shows 'Nth match out of M' at every search
 Plug 'nelstrom/vim-visual-star-search'                            " start a * or # search from a visual block
 Plug 'MattesGroeger/vim-bookmarks'                                " bookmarks for vim
-Plug 'janko-m/vim-test'                                           " run async tests from within vim
+Plug 'christoomey/vim-tmux-navigator'                             " navigate seamlessly between vim and tmux splits
 
 " Color Schemes
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
