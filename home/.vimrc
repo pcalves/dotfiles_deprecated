@@ -176,6 +176,7 @@ autocmd! BufWritePost * Neomake
 
 " ---------- JAVASCRIPT MAKERS ----------
 " Default JS linting is with ESLint
+let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_jsx_enabled_makers = ['eslint']
 " load local eslint in the project root
@@ -241,3 +242,9 @@ let g:jsx_ext_required = 0
 
 " Allow netrw to remove non-empty local directories
 let g:netrw_localrmdir='rm -r'
+
+" FZF
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" EditorConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
