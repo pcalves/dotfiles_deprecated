@@ -1,12 +1,11 @@
 install ack
 install curl
-install docker
+install fzf
 install git
 install hub
 install neovim
 install neovim-dot-app
 install the_silver_searcher
-install thefuck
 install tldr
 install wget
 install z
