@@ -7,17 +7,17 @@ call plug#begin('~/.vim/plugged')
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
+
 Plug 'mattn/emmet-vim'                                            " Emmet for vim, 'nuff said
 Plug 'vim-airline/vim-airline'                                    " Statusline
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Align'                                          " It's in the name: align text, declarations, pretty much anything
 Plug 'Raimondi/delimitMate'                                       " Auto-inserts closing characters when applicable
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }       " asynchronous keyword completion
-Plug 'carlitux/deoplete-ternjs'                                   " deoplete.nvim source for javascript
 Plug 'Shougo/neosnippet'                                          " snippets in vim
 Plug 'Shougo/neosnippet-snippets'                                 " default snippets
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }               " JS code completion
 Plug 'ntpeters/vim-better-whitespace'                             " Highlight trailing whitespace characters
-Plug 'airblade/vim-gitgutter'                                     " git diff in gutter
+Plug 'mhinz/vim-signify'                                          " git diff in gutter
 Plug 'tpope/vim-fugitive'                                         " git in vim ❤️
 Plug 'tpope/vim-commentary'                                       " Comment/Uncomment code
 Plug 'tpope/vim-repeat'                                           " . for plugins
@@ -33,11 +33,12 @@ Plug 'editorconfig/editorconfig-vim'                              " EditorConfig
 Plug 'justinmk/vim-sneak'                                         " Vim motion plugin that jumps to any location specified by two characters (s{char}{char})
 Plug 'vim-scripts/IndexedSearch'                                  " shows 'Nth match out of M' at every search
 Plug 'nelstrom/vim-visual-star-search'                            " start a * or # search from a visual block
-Plug 'MattesGroeger/vim-bookmarks'                                " bookmarks for vim
-Plug 'christoomey/vim-tmux-navigator'                             " navigate seamlessly between vim and tmux splits
+Plug 'Yggdroot/indentLine'                                        " display indention levels with thin vertical lines
+Plug 'AndrewRadev/splitjoin.vim'                                  " gS to splig, gJ to join
 
 " Color Schemes
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plug 'dracula/vim'
+Plug 'junegunn/seoul256.vim'
 
 " Snippets
 Plug 'justinj/vim-react-snippets'
@@ -84,7 +85,6 @@ set undodir=~/.vim/undodir
 
 
 "" Color scheme
-set background=dark
 color dracula
 
 
@@ -98,6 +98,12 @@ set breakindent                " sensible soft wrapping of lines
 set tabstop=2 shiftwidth=2     " a tab is two spaces
 set expandtab                  " use spaces, not tabs (optional)
 set backspace=indent,eol,start " backspace through everything in insert mode
+
+
+
+
+"" Margin highlighting
+set colorcolumn=80,120
 
 
 
