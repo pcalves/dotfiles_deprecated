@@ -217,3 +217,19 @@ function base64() {
       echo "'$1' is not a valid file"
   fi
 }
+
+# convert videos to GIFs using ffmpeg and gifsicle
+# https://gist.github.com/dergachev/4627207
+function giffify () {
+  ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 10 -f gif - |\
+  gifsicle --optimize=3 --delay=3 > "${$1%.*}.gif"
+}
+
+# git branch fuzzy search checkout
+# https://coderwall.com/p/ba8afa/git-branch-fuzzy-search-checkout
+fbr () {
+    local branches branch
+    branches=$(git branch -a) &&
+    branch=$(echo "$branches" | fzf +s +m -e) &&
+    git checkout $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
+}

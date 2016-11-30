@@ -22,4 +22,4 @@ alias h="sudo nvim /private/etc/hosts && sudo nvim /private/etc/apache2/extra/ht
 ### Git
 # Delete already merged branches.
 # Source: http://stevenharman.net/git-clean-delete-already-merged-branches
-alias gbclean="git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d"
+alias gbclean="git branch --merged master | grep -v \"\* master\" | xargs -n 1 git branch -d"
