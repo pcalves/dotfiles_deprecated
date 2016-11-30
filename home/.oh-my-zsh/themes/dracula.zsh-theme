@@ -1,0 +1,1 @@
+/Users/pc/zsh/dracula.zsh-theme
