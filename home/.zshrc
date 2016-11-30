@@ -5,8 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="agnoster"
-ZSH_THEME="pure"
+#
+ZSH_THEME="honukai"
 
 # Base16 Shell
 # BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
@@ -63,13 +63,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ### Generic Colouriser
 source "`brew --prefix`/etc/grc.bashrc"
 
-### rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-### nvm
-source ~/.nvm/nvm.sh
-
 PERL_MB_OPT="--install_base \"/Users/pc/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/pc/perl5"; export PERL_MM_OPT;
 
@@ -92,3 +85,25 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help";
 eval "$(thefuck --alias)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# AZK HOST
+export AZK_BALANCER_HOST=dev.cterm.io
+
+# nvm config
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# call nvm use automatically whenever you enter a directory that contains
+# an .nvmrc file with a string telling nvm which node to use
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  elif [[ $(nvm version) != $(nvm version default)  ]]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
