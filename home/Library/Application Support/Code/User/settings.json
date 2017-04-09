@@ -1,0 +1,20 @@
+{
+    "workbench.colorTheme": "Dracula",
+    "editor.fontFamily": "'Office Code Pro', Menlo, Monaco, 'Courier New', monospace",
+    "editor.renderWhitespace": "all",
+    "editor.lineNumbers": "relative",
+    "window.zoomLevel": 0,
+    "editor.fontSize": 11,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.formatOnType": true,
+    "editor.cursorBlinking": "phase",
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    }
+}
