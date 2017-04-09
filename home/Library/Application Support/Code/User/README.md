@@ -10,4 +10,4 @@ To install extensions from list:
 sh install-code-extensions.sh
 ```
 
-Note: in order for that script to work, `code` must be installed ([[https://code.visualstudio.com/docs/setup/mac#_command-line](link))
+Note: in order for that script to work, `code` must be installed (https://code.visualstudio.com/docs/setup/mac#_command-line)
