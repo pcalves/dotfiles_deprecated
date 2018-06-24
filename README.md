@@ -1,3 +1,7 @@
+# Warning
+
+These dotfiles have been deprecated in favor of https://github.com/pcalves/dotfiles. Please look at those insteas.
+
 # dotfiles
 🍵 There are lots of dotfiles out there. These are mine. Feel free to look around.
 
